@@ -1,4 +1,4 @@
-package main
+package gaglib
 
 type API struct {
 	BasePath             string                `yaml:"basepath,omitempty" xml:"base_path" json:"base_path,omitempty"`

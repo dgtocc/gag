@@ -1,4 +1,4 @@
-package main
+package gaglib
 
 import (
 	"fmt"
@@ -231,7 +231,7 @@ func addFunction(a *ast.FuncDecl) {
 
 }
 
-func load(src string) error {
+func Load(src string) error {
 
 	api.Types = (make(map[string]*APIType))
 	api.Methods = (make(map[string]*APIMethod))

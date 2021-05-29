@@ -1,4 +1,4 @@
-package main
+package gaglib
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 	_ "embed"
 )
 
-func processGoClientOutput(f string) error {
+func ProcessGoClientOutput(f string) error {
 	sb := strings.Builder{}
 	resolveReqTypeDecStr := func(r *APIParamType) string {
 		ret := ""

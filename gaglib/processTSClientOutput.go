@@ -1,4 +1,4 @@
-package main
+package gaglib
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func processTSClientOutput(f string) error {
+func ProcessTSClientOutput(f string) error {
 
 	var tstypemapper map[string]string = make(map[string]string)
 	var exceptionaltypemapper map[string]string = make(map[string]string)

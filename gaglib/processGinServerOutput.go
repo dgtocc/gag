@@ -1,4 +1,4 @@
-package main
+package gaglib
 
 import (
 	_ "embed"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func processGinServerOutput(f string) error {
+func ProcessGinServerOutput(f string) error {
 	sb := strings.Builder{}
 	l := func(s string, p ...interface{}) {
 		if !strings.HasSuffix(s, "\n") {

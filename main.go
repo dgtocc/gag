@@ -2,13 +2,10 @@ package main
 
 import (
 	"github.com/alecthomas/kong"
+	"github.com/dgtocc/gag/gaglib"
 	"github.com/pkg/errors"
 	"log"
 )
-
-var knownMethods map[string]bool = make(map[string]bool)
-var httpMapper map[string]map[string]string = make(map[string]map[string]string)
-var packageName string = "main"
 
 var CLI struct {
 	Yaml struct {
@@ -58,44 +55,44 @@ func main() {
 		log.Printf("Gens YAML")
 		src = CLI.Yaml.Src
 		processor = func() error {
-			return processYaml(CLI.Yaml.Fname, nil)
+			return gaglib.ProcessYaml(CLI.Yaml.Fname, nil)
 		}
 	case "json <src> <fname>":
 		log.Printf("Gens JSON")
 		src = CLI.Json.Src
 		processor = func() error {
-			return processJSON(CLI.Json.Fname, nil)
+			return gaglib.ProcessJSON(CLI.Json.Fname, nil)
 		}
 
 	case "gin <src>":
 		log.Printf("Gen Gin Server")
 		src = CLI.Gin.Src
 		processor = func() error {
-			return processGinServerOutput(CLI.Gin.Src + "/apigen.go")
+			return gaglib.ProcessGinServerOutput(CLI.Gin.Src + "/apigen.go")
 		}
 	case "gocli <src> <dst>":
 		log.Printf("Gen GO Client")
 		src = CLI.Gocli.Src
 		processor = func() error {
-			return processGoClientOutput(CLI.Gocli.Dst)
+			return gaglib.ProcessGoClientOutput(CLI.Gocli.Dst)
 		}
 	case "pycli <src> <dst>":
 		log.Printf("Gen Python Client")
 		src = CLI.Pycli.Src
 		processor = func() error {
-			return processPyClientOutput(CLI.Pycli.Dst)
+			return gaglib.ProcessPyClientOutput(CLI.Pycli.Dst)
 		}
 	case "ts <src> <dst>":
 		log.Printf("Gen TS Client")
 		src = CLI.Ts.Src
 		processor = func() error {
-			return processTSClientOutput(CLI.Ts.Dst)
+			return gaglib.ProcessTSClientOutput(CLI.Ts.Dst)
 		}
 	case "http <src> <dst>":
 		log.Printf("Gen Http Client")
 		src = CLI.Http.Src
 		processor = func() error {
-			return processHttpCallOut(CLI.Http.Dst)
+			return gaglib.ProcessHttpCallOut(CLI.Http.Dst)
 		}
 	default:
 		err = errors.New("unknown option")
@@ -104,7 +101,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	err = load(src)
+	err = gaglib.Load(src)
 
 	if err != nil {
 		panic(err)

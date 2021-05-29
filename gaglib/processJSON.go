@@ -1,11 +1,11 @@
-package main
+package gaglib
 
 import (
 	"encoding/json"
 	"io/ioutil"
 )
 
-func processJSON(dst string, opts interface{}) error {
+func ProcessJSON(dst string, opts interface{}) error {
 	bs, err := json.Marshal(api)
 	if err != nil {
 		return err

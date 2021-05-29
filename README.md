@@ -55,7 +55,11 @@ func main() {
 
 Based on the metadata added to your method, the API will be generated
 
+## Install
 
+```
+go install github.com/dgtocc/gag@latest
+```
 ## General Usage
 
 ```

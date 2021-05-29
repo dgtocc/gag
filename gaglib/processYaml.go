@@ -1,11 +1,11 @@
-package main
+package gaglib
 
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
 
-func processYaml(dst string, opts interface{}) error {
+func ProcessYaml(dst string, opts interface{}) error {
 	bs, err := yaml.Marshal(api)
 	if err != nil {
 		return err

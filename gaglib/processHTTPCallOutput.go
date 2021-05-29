@@ -1,4 +1,4 @@
-package main
+package gaglib
 
 import (
 	"bytes"
@@ -68,7 +68,7 @@ func typeToJsonStr(tn string) string {
 	return string(bs)
 }
 
-func processHttpCallOut(f string) error {
+func ProcessHttpCallOut(f string) error {
 
 	b := bytes.Buffer{}
 
