@@ -2,6 +2,7 @@ package goapi
 
 import (
 	"bytes"
+	"crypto"
 	"encoding/json"
 	"errors"
 	"io/ioutil"
@@ -53,9 +54,31 @@ func invoke(m string, path string, bodyo interface{}) (*json.Decoder, error) {
 	return ret, nil
 }
 
-func SomeAPI(req []*time.Time) (res string, err error) {
+type AStr struct {
+	SomeWeirdTest string
+	Recursive     map[string]AStr
+	When          time.Time
+	Country       string
+	IsCondo       bool
+	Arrofpstr     []string
+	Some          crypto.Decrypter
+	City          string
+	HouseNumber   int64
+}
+
+func SomeAPI(req []time.Time) (res string, err error) {
 	var dec *json.Decoder
 	dec, err = invoke("POST", "/someapi", req)
+	if err != nil {
+		return
+	}
+	var ret string
+	err = dec.Decode(&ret)
+	return ret, err
+}
+func SomeGET(req []*AStr) (res string, err error) {
+	var dec *json.Decoder
+	dec, err = invoke("GET", "/someapi2", req)
 	if err != nil {
 		return
 	}
