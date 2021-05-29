@@ -10,9 +10,9 @@ var perms map[string]string
 
 func init() {
 	perms = make(map[string]string)
+	perms["GET_/someapi2"] = "ASD"
 	perms["POST_/someapi"] = "ASD"
 }
-
 func GetPerm(c *gin.Context) string {
 	perm, ok := perms[c.Request.Method+"_"+c.Request.URL.Path]
 	if !ok {
@@ -23,9 +23,9 @@ func GetPerm(c *gin.Context) string {
 
 func Build(r *gin.Engine) {
 	r.POST("/someapi", func(c *gin.Context) {
-		var req []*time.Time
-		req = make([]*time.Time, 0)
-		c.BindJSON(req)
+		var req []time.Time
+		req = make([]time.Time, 0)
+		c.BindJSON(&req)
 		res, err := SomeAPI(c.Request.Context(), req)
 		if err != nil {
 			c.AbortWithError(http.StatusInternalServerError, err)
@@ -33,5 +33,15 @@ func Build(r *gin.Engine) {
 		}
 		c.JSON(200, res)
 	})
-
+	r.GET("/someapi2", func(c *gin.Context) {
+		var req []*AStr
+		req = make([]*AStr, 0)
+		c.BindJSON(&req)
+		res, err := SomeGET(c.Request.Context(), req)
+		if err != nil {
+			c.AbortWithError(http.StatusInternalServerError, err)
+			return
+		}
+		c.JSON(200, res)
+	})
 }

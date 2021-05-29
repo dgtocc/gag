@@ -34,8 +34,19 @@ func ProcessGoClientOutput(f string) error {
 	"io/ioutil"
 	"encoding/json"
 	"net/http"
-	"time"
-)
+	"time"`)
+
+	for k, v := range api.UsedImportsTypes {
+		if v == "time" || v == "net/http" || v == "bytes" || v == "errors" || v == "io/ioutil" || v == "encoding/json" {
+
+		} else if k == v {
+			l("\t\"%s\"", k)
+		} else {
+			l("\t%s \"%s\"", k, v)
+		}
+	}
+
+	l(`)
 var Basepath string = ""
 var Host string = ""
 var ExtraHeaders map[string]string = make(map[string]string)
@@ -86,12 +97,12 @@ func invoke(m string, path string, bodyo interface{}) (*json.Decoder, error) {
 			if f.Map {
 				l("\t %s map[%s]%s", fname, f.Mapkey, f.Mapval)
 			} else if f.Array {
-				l("\t %s[]", f.Type)
+				l("\t %s []%s", fname, f.Type)
 			} else {
-				l("\t %s", f.Type)
+				l("\t %s %s", fname, f.Type)
 			}
 		}
-		l("}", tname)
+		l("}")
 	}
 
 	for _, m := range api.Methods {
@@ -107,7 +118,7 @@ func invoke(m string, path string, bodyo interface{}) (*json.Decoder, error) {
 			amp = "&"
 		}
 		l("\terr=dec.Decode(%sret)", amp)
-		l("return ret,err")
+		l("\treturn ret,err")
 		l("}")
 	}
 
