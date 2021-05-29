@@ -1,0 +1,361 @@
+types:
+  AStr:
+    name: AStr
+    fields:
+      Arrofpstr:
+        type: string
+        array: true
+        tags:
+          json:
+            key: json
+            name: arrofpstr
+            opts:
+            - omitempty
+      City:
+        type: string
+      Country:
+        type: string
+      HouseNumber:
+        type: int64
+      IsCondo:
+        type: bool
+      Recursive:
+        map: true
+        mapkey: string
+        mapval: AStr
+      Some:
+        type: crypto.Decrypter
+      SomeWeirdTest:
+        type: string
+        tags:
+          json:
+            key: json
+            name: SUPERCALIFRAGILISPEALIDOUX
+            opts: []
+      When:
+        type: time.Time
+methods:
+  SomeAPI:
+    name: SomeAPI
+    desc: SomeAPI
+    verb: POST
+    path: /someapi
+    perm: ASD
+    reqtype:
+      typename: string
+      ispointer: false
+      isarray: false
+    restype:
+      typename: string
+      ispointer: false
+      isarray: false
+  SomeAPI2:
+    name: SomeAPI2
+    desc: SomeAPI2
+    verb: DELETE
+    path: /someapi
+    perm: ASD
+    reqtype:
+      typename: crypto.Hash
+      ispointer: true
+      isarray: false
+    restype:
+      typename: string
+      ispointer: false
+      isarray: true
+  SomeGET:
+    name: SomeGET
+    desc: SomeGET
+    verb: GET
+    path: /someapi
+    perm: ASD
+    reqtype:
+      typename: string
+      ispointer: false
+      isarray: false
+    restype:
+      typename: string
+      ispointer: false
+      isarray: false
+  SomePUT:
+    name: SomePUT
+    desc: SomePUT
+    verb: PUT
+    path: /someapi
+    perm: ASD
+    reqtype:
+      typename: string
+      ispointer: false
+      isarray: false
+    restype:
+      typename: string
+      ispointer: false
+      isarray: false
+namespace: goapi
+imports:
+  context: context
+  crypto: crypto
+  gin: github.com/gin-gonic/gin
+  time: time
+used_imports_types:
+  crypto: crypto
+  time: time
+used_imports_functions:
+  crypto: crypto
+sorted_paths:
+- path: /someapi
+  map_verbs:
+    DELETE:
+      verb: DELETE
+      method:
+        name: SomeAPI2
+        desc: SomeAPI2
+        verb: DELETE
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: crypto.Hash
+          ispointer: true
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: true
+    GET:
+      verb: GET
+      method:
+        name: SomeGET
+        desc: SomeGET
+        verb: GET
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: string
+          ispointer: false
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: false
+    POST:
+      verb: POST
+      method:
+        name: SomeAPI
+        desc: SomeAPI
+        verb: POST
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: string
+          ispointer: false
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: false
+    PUT:
+      verb: PUT
+      method:
+        name: SomePUT
+        desc: SomePUT
+        verb: PUT
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: string
+          ispointer: false
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: false
+  sorted_verbs:
+  - verb: DELETE
+    method:
+      name: SomeAPI2
+      desc: SomeAPI2
+      verb: DELETE
+      path: /someapi
+      perm: ASD
+      reqtype:
+        typename: crypto.Hash
+        ispointer: true
+        isarray: false
+      restype:
+        typename: string
+        ispointer: false
+        isarray: true
+  - verb: GET
+    method:
+      name: SomeGET
+      desc: SomeGET
+      verb: GET
+      path: /someapi
+      perm: ASD
+      reqtype:
+        typename: string
+        ispointer: false
+        isarray: false
+      restype:
+        typename: string
+        ispointer: false
+        isarray: false
+  - verb: POST
+    method:
+      name: SomeAPI
+      desc: SomeAPI
+      verb: POST
+      path: /someapi
+      perm: ASD
+      reqtype:
+        typename: string
+        ispointer: false
+        isarray: false
+      restype:
+        typename: string
+        ispointer: false
+        isarray: false
+  - verb: PUT
+    method:
+      name: SomePUT
+      desc: SomePUT
+      verb: PUT
+      path: /someapi
+      perm: ASD
+      reqtype:
+        typename: string
+        ispointer: false
+        isarray: false
+      restype:
+        typename: string
+        ispointer: false
+        isarray: false
+paths:
+  /someapi:
+    path: /someapi
+    map_verbs:
+      DELETE:
+        verb: DELETE
+        method:
+          name: SomeAPI2
+          desc: SomeAPI2
+          verb: DELETE
+          path: /someapi
+          perm: ASD
+          reqtype:
+            typename: crypto.Hash
+            ispointer: true
+            isarray: false
+          restype:
+            typename: string
+            ispointer: false
+            isarray: true
+      GET:
+        verb: GET
+        method:
+          name: SomeGET
+          desc: SomeGET
+          verb: GET
+          path: /someapi
+          perm: ASD
+          reqtype:
+            typename: string
+            ispointer: false
+            isarray: false
+          restype:
+            typename: string
+            ispointer: false
+            isarray: false
+      POST:
+        verb: POST
+        method:
+          name: SomeAPI
+          desc: SomeAPI
+          verb: POST
+          path: /someapi
+          perm: ASD
+          reqtype:
+            typename: string
+            ispointer: false
+            isarray: false
+          restype:
+            typename: string
+            ispointer: false
+            isarray: false
+      PUT:
+        verb: PUT
+        method:
+          name: SomePUT
+          desc: SomePUT
+          verb: PUT
+          path: /someapi
+          perm: ASD
+          reqtype:
+            typename: string
+            ispointer: false
+            isarray: false
+          restype:
+            typename: string
+            ispointer: false
+            isarray: false
+    sorted_verbs:
+    - verb: DELETE
+      method:
+        name: SomeAPI2
+        desc: SomeAPI2
+        verb: DELETE
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: crypto.Hash
+          ispointer: true
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: true
+    - verb: GET
+      method:
+        name: SomeGET
+        desc: SomeGET
+        verb: GET
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: string
+          ispointer: false
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: false
+    - verb: POST
+      method:
+        name: SomeAPI
+        desc: SomeAPI
+        verb: POST
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: string
+          ispointer: false
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: false
+    - verb: PUT
+      method:
+        name: SomePUT
+        desc: SomePUT
+        verb: PUT
+        path: /someapi
+        perm: ASD
+        reqtype:
+          typename: string
+          ispointer: false
+          isarray: false
+        restype:
+          typename: string
+          ispointer: false
+          isarray: false

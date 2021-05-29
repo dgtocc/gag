@@ -1,0 +1,531 @@
+{
+  "BasePath": "",
+  "Host": "",
+  "Types": {
+    "AStr": {
+      "Name": "AStr",
+      "Desc": "",
+      "Fields": {
+        "Arrofpstr": {
+          "Type": "string",
+          "Array": true,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {
+            "json": {
+              "Key": "json",
+              "Name": "arrofpstr",
+              "Opts": [
+                "omitempty"
+              ]
+            }
+          }
+        },
+        "City": {
+          "Type": "string",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {}
+        },
+        "Country": {
+          "Type": "string",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {}
+        },
+        "HouseNumber": {
+          "Type": "int64",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {}
+        },
+        "IsCondo": {
+          "Type": "bool",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {}
+        },
+        "Recursive": {
+          "Type": "",
+          "Array": false,
+          "Desc": "",
+          "Map": true,
+          "Mapkey": "string",
+          "Mapval": "AStr",
+          "Tags": {}
+        },
+        "Some": {
+          "Type": "crypto.Decrypter",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {}
+        },
+        "SomeWeirdTest": {
+          "Type": "string",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {
+            "json": {
+              "Key": "json",
+              "Name": "SUPERCALIFRAGILISPEALIDOUX",
+              "Opts": null
+            }
+          }
+        },
+        "When": {
+          "Type": "time.Time",
+          "Array": false,
+          "Desc": "",
+          "Map": false,
+          "Mapkey": "",
+          "Mapval": "",
+          "Tags": {}
+        }
+      },
+      "Col": "",
+      "TypeDef": ""
+    }
+  },
+  "Methods": {
+    "SomeAPI": {
+      "Name": "SomeAPI",
+      "Desc": "SomeAPI",
+      "Verb": "POST",
+      "Path": "/someapi",
+      "Perm": "ASD",
+      "ReqType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": false
+      },
+      "ResType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": false
+      }
+    },
+    "SomeAPI2": {
+      "Name": "SomeAPI2",
+      "Desc": "SomeAPI2",
+      "Verb": "DELETE",
+      "Path": "/someapi",
+      "Perm": "ASD",
+      "ReqType": {
+        "Typename": "crypto.Hash",
+        "Ispointer": true,
+        "IsArray": false
+      },
+      "ResType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": true
+      }
+    },
+    "SomeGET": {
+      "Name": "SomeGET",
+      "Desc": "SomeGET",
+      "Verb": "GET",
+      "Path": "/someapi",
+      "Perm": "ASD",
+      "ReqType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": false
+      },
+      "ResType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": false
+      }
+    },
+    "SomePUT": {
+      "Name": "SomePUT",
+      "Desc": "SomePUT",
+      "Verb": "PUT",
+      "Path": "/someapi",
+      "Perm": "ASD",
+      "ReqType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": false
+      },
+      "ResType": {
+        "Typename": "string",
+        "Ispointer": false,
+        "IsArray": false
+      }
+    }
+  },
+  "Namespace": "goapi",
+  "Imports": {
+    "context": "context",
+    "crypto": "crypto",
+    "gin": "github.com/gin-gonic/gin",
+    "time": "time"
+  },
+  "UsedImportsTypes": {
+    "crypto": "crypto",
+    "time": "time"
+  },
+  "UsedImportsFunctions": {
+    "crypto": "crypto"
+  },
+  "SortedPaths": [
+    {
+      "Path": "/someapi",
+      "MapVerbs": {
+        "DELETE": {
+          "Verb": "DELETE",
+          "Method": {
+            "Name": "SomeAPI2",
+            "Desc": "SomeAPI2",
+            "Verb": "DELETE",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "crypto.Hash",
+              "Ispointer": true,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": true
+            }
+          }
+        },
+        "GET": {
+          "Verb": "GET",
+          "Method": {
+            "Name": "SomeGET",
+            "Desc": "SomeGET",
+            "Verb": "GET",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        "POST": {
+          "Verb": "POST",
+          "Method": {
+            "Name": "SomeAPI",
+            "Desc": "SomeAPI",
+            "Verb": "POST",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        "PUT": {
+          "Verb": "PUT",
+          "Method": {
+            "Name": "SomePUT",
+            "Desc": "SomePUT",
+            "Verb": "PUT",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        }
+      },
+      "SortedVerbs": [
+        {
+          "Verb": "DELETE",
+          "Method": {
+            "Name": "SomeAPI2",
+            "Desc": "SomeAPI2",
+            "Verb": "DELETE",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "crypto.Hash",
+              "Ispointer": true,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": true
+            }
+          }
+        },
+        {
+          "Verb": "GET",
+          "Method": {
+            "Name": "SomeGET",
+            "Desc": "SomeGET",
+            "Verb": "GET",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        {
+          "Verb": "POST",
+          "Method": {
+            "Name": "SomeAPI",
+            "Desc": "SomeAPI",
+            "Verb": "POST",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        {
+          "Verb": "PUT",
+          "Method": {
+            "Name": "SomePUT",
+            "Desc": "SomePUT",
+            "Verb": "PUT",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "Paths": {
+    "/someapi": {
+      "Path": "/someapi",
+      "MapVerbs": {
+        "DELETE": {
+          "Verb": "DELETE",
+          "Method": {
+            "Name": "SomeAPI2",
+            "Desc": "SomeAPI2",
+            "Verb": "DELETE",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "crypto.Hash",
+              "Ispointer": true,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": true
+            }
+          }
+        },
+        "GET": {
+          "Verb": "GET",
+          "Method": {
+            "Name": "SomeGET",
+            "Desc": "SomeGET",
+            "Verb": "GET",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        "POST": {
+          "Verb": "POST",
+          "Method": {
+            "Name": "SomeAPI",
+            "Desc": "SomeAPI",
+            "Verb": "POST",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        "PUT": {
+          "Verb": "PUT",
+          "Method": {
+            "Name": "SomePUT",
+            "Desc": "SomePUT",
+            "Verb": "PUT",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        }
+      },
+      "SortedVerbs": [
+        {
+          "Verb": "DELETE",
+          "Method": {
+            "Name": "SomeAPI2",
+            "Desc": "SomeAPI2",
+            "Verb": "DELETE",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "crypto.Hash",
+              "Ispointer": true,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": true
+            }
+          }
+        },
+        {
+          "Verb": "GET",
+          "Method": {
+            "Name": "SomeGET",
+            "Desc": "SomeGET",
+            "Verb": "GET",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        {
+          "Verb": "POST",
+          "Method": {
+            "Name": "SomeAPI",
+            "Desc": "SomeAPI",
+            "Verb": "POST",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        },
+        {
+          "Verb": "PUT",
+          "Method": {
+            "Name": "SomePUT",
+            "Desc": "SomePUT",
+            "Verb": "PUT",
+            "Path": "/someapi",
+            "Perm": "ASD",
+            "ReqType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            },
+            "ResType": {
+              "Typename": "string",
+              "Ispointer": false,
+              "IsArray": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}
