@@ -58,7 +58,7 @@ Based on the metadata added to your method, the API will be generated
 ## Install
 
 ```
-go install github.com/dgtocc/gag@latest
+go build -o gag ./cmd
 ```
 ## General Usage
 

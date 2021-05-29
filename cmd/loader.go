@@ -1,4 +1,4 @@
-package gaglib
+package main
 
 import (
 	"fmt"
@@ -13,6 +13,10 @@ import (
 )
 
 var api API
+
+var knownMethods map[string]bool = make(map[string]bool)
+var httpMapper map[string]map[string]string = make(map[string]map[string]string)
+var packageName string = "main"
 
 func llog(s string, p ...interface{}) {
 	fmt.Printf(s+"\n", p...)

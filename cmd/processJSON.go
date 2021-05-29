@@ -1,4 +1,4 @@
-package gaglib
+package main
 
 import (
 	"encoding/json"
