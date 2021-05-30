@@ -99,6 +99,53 @@ tag is found.
 - PERM: defines permission group to method - please see later how to bind permissions
 - VERB: Http Verb to be used when binding method. Default is POST
 
+## Plugin in the permissions
+
+Please see the method checkpermisson below. Once you generate the server, the method GetPerm will be created,
+and can be used to retrieve the permission set for a call. By usint a middleware like this you can easily plug any
+permission system available with the generated API.
+
+```go
+package main
+
+import (
+	"github.com/dgtocc/gag/test/goapi"
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+func checkPerm(ctx *gin.Context, perm string) bool {
+	//Do your logic here
+	return false
+}
+func main() {
+	g := gin.Default()
+	g.Use(func(context *gin.Context) {
+		perm := goapi.GetPerm(context)
+		if checkPerm(context, perm) == false {
+			context.AbortWithStatus(http.StatusForbidden)
+			return
+		} else {
+			context.Next()
+		}
+	})
+	g.Run()
+}
+
+```
+
+## Oh, but I still need to access something from GIN Context
+
+Worry not - context follows your code. At any time you can call it like:
+
+```go
+gctx:=ctx.Value("CTX").(*gin.Context)
+```
+
+Keep in mind that, if new server implementation is created such dependency will break if you try to generate such code.
+You can use middlewares for this in your code, if it is the case.
+
+
 ## Install
 
 ```
@@ -132,3 +179,8 @@ Commands:
     Gens Http call impl
 
 ```
+
+## Need improvement
+
+- Type mapping system
+- loader code is too messy

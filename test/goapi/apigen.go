@@ -1,6 +1,7 @@
 package goapi
 
 import (
+	contextlib "context"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"
@@ -26,6 +27,7 @@ func Build(r *gin.Engine) {
 		var req []time.Time
 		req = make([]time.Time, 0)
 		c.BindJSON(&req)
+		c.Request.WithContext(contextlib.WithValue(c.Request.Context(), "CTX", c))
 		res, err := SomeAPI(c.Request.Context(), req)
 		if err != nil {
 			c.AbortWithError(http.StatusInternalServerError, err)

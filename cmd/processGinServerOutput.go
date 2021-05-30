@@ -1,7 +1,6 @@
 package main
 
 import (
-	_ "embed"
 	"fmt"
 	"os"
 	"strings"
@@ -53,6 +52,7 @@ func ProcessGinServerOutput(f string) error {
 	l(fmt.Sprintf("package %s\n\n", api.Namespace))
 	l("import(")
 	l("\t\"github.com/gin-gonic/gin\"")
+	l("\tcontextlib \"context\"")
 	l("\t\"net/http\"")
 
 	for alias, pkg := range api.UsedImportsFunctions {
@@ -102,6 +102,7 @@ func ProcessGinServerOutput(f string) error {
 			} else {
 				l("\t\tc.BindJSON(&req)")
 			}
+			l("\t\tc.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"CTX\", c))")
 			l("\t\tres,err := %s(c.Request.Context(),req)", verb.Method.Name)
 			l("\t\tif err!=nil{")
 			l("\t\t\tc.AbortWithError(http.StatusInternalServerError,err)")

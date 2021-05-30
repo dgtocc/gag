@@ -3,6 +3,7 @@ package goapi
 import (
 	"context"
 	"crypto"
+	"github.com/gin-gonic/gin"
 	"log"
 	"time"
 )
@@ -39,6 +40,7 @@ func SomeAPI(ctx context.Context, s []time.Time) (out string, err error) {
 @VERB: GET
 */
 func SomeGET(ctx context.Context, s []*AStr) (out string, err error) {
+	gctx := ctx.Value("CTX").(*gin.Context)
 	print("Got:" + s[0].SomeWeirdTest)
 	out = time.Now().String() + " - Hey Ya!"
 	return
