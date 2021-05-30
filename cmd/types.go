@@ -9,14 +9,14 @@ type API struct {
 	Imports              map[string]string     `yaml:"imports" json:"imports,omitempty" xml:"imports"`
 	UsedImportsTypes     map[string]string     `yaml:"used_imports_types" json:"used_imports_types,omitempty" xml:"used_imports_types"`
 	UsedImportsFunctions map[string]string     `yaml:"used_imports_functions" json:"used_imports_functions,omitempty" xml:"used_imports_functions"`
-	SortedPaths          []*APIPath            `yaml:"sorted_paths" json:"sorted_paths,omitempty" xml:"sorted_paths"`
-	Paths                map[string]*APIPath   `yaml:"paths" json:"paths,omitempty" xml:"paths"`
+	SortedPaths          []*APIPath            `yaml:"paths" json:"paths,omitempty" xml:"sorted_paths"`
+	Paths                map[string]*APIPath   `yaml:"-" json:"-" xml:"paths"`
 }
 
 type APIPath struct {
 	Path        string              `yaml:"path" xml:"path"`
-	MapVerbs    map[string]*APIVerb `yaml:"map_verbs" xml:"map_verbs"`
-	SortedVerbs []*APIVerb          `yaml:"sorted_verbs" xml:"sorted_verbs"`
+	MapVerbs    map[string]*APIVerb `yaml:"-" xml:"-" json:"-"`
+	SortedVerbs []*APIVerb          `yaml:"verbs" xml:"verbs" json:"verbs"`
 }
 
 type APIVerb struct {

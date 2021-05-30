@@ -55,20 +55,20 @@ func invoke(m string, path string, bodyo interface{}) (*json.Decoder, error) {
 }
 
 type AStr struct {
-	SomeWeirdTest string
-	Recursive     map[string]AStr
-	When          time.Time
-	Country       string
 	IsCondo       bool
+	SomeWeirdTest string
 	Arrofpstr     []string
+	When          time.Time
 	Some          crypto.Decrypter
+	Country       string
 	City          string
 	HouseNumber   int64
+	Recursive     map[string]AStr
 }
 
-func SomeAPI(req []time.Time) (res string, err error) {
+func SomeGET(req []*AStr) (res string, err error) {
 	var dec *json.Decoder
-	dec, err = invoke("POST", "/someapi", req)
+	dec, err = invoke("GET", "/someapi2", req)
 	if err != nil {
 		return
 	}
@@ -76,9 +76,9 @@ func SomeAPI(req []time.Time) (res string, err error) {
 	err = dec.Decode(&ret)
 	return ret, err
 }
-func SomeGET(req []*AStr) (res string, err error) {
+func SomeAPI(req []time.Time) (res string, err error) {
 	var dec *json.Decoder
-	dec, err = invoke("GET", "/someapi2", req)
+	dec, err = invoke("POST", "/someapi", req)
 	if err != nil {
 		return
 	}
