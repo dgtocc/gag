@@ -266,9 +266,6 @@ Commands:
   gocli <src> <dst>
     Gens Go Cli impl
 
-  pycli <src> <dst>
-    Gens Python Cli impl
-
   ts <src> <dst>
     Gens Typescript Cli impl
 
