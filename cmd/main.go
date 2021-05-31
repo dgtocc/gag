@@ -22,10 +22,10 @@ var CLI struct {
 		Src string `arg help:"Source Dir"`
 		Dst string `arg help:"Dst file"`
 	} `cmd help:"Gens Go Cli impl"`
-	Pycli struct {
-		Src string `arg help:"Source Dir"`
-		Dst string `arg help:"Dst file"`
-	} `cmd help:"Gens Python Cli impl"`
+	//Pycli struct {
+	//	Src string `arg help:"Source Dir"`
+	//	Dst string `arg help:"Dst file"`
+	//} `cmd help:"Gens Python Cli impl"`
 	Ts struct {
 		Src string `arg help:"Source Dir"`
 		Dst string `arg help:"Dst file"`
@@ -75,12 +75,12 @@ func main() {
 		processor = func() error {
 			return ProcessGoClientOutput(CLI.Gocli.Dst)
 		}
-	case "pycli <src> <dst>":
-		log.Printf("Gen Python Client")
-		src = CLI.Pycli.Src
-		processor = func() error {
-			return ProcessPyClientOutput(CLI.Pycli.Dst)
-		}
+	//case "pycli <src> <dst>":
+	//	log.Printf("Gen Python Client")
+	//	src = CLI.Pycli.Src
+	//	processor = func() error {
+	//		return ProcessPyClientOutput(CLI.Pycli.Dst)
+	//	}
 	case "ts <src> <dst>":
 		log.Printf("Gen TS Client")
 		src = CLI.Ts.Src

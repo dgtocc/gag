@@ -112,13 +112,19 @@ func invoke(m string, path string, bodyo interface{}) (*json.Decoder, error) {
 		l("\tif err!=nil{")
 		l("\t\treturn")
 		l("\t}")
-		l("\tvar ret %s", resolveReqTypeDecStr(m.ResType))
+
 		amp := ""
 		if m.ResType.IsArray || !m.ResType.Ispointer {
 			amp = "&"
 		}
-		l("\terr=dec.Decode(%sret)", amp)
-		l("\treturn ret,err")
+		if m.ResType.Ispointer {
+			l("\tres = &%s{}", m.ResType.Typename)
+		} else if m.ResType.IsArray {
+			l("\tret = make([]%s,0)", m.ResType.Typename)
+		}
+
+		l("\terr=dec.Decode(%sres)", amp)
+		l("\treturn")
 		l("}")
 	}
 

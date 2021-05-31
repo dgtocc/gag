@@ -61,15 +61,15 @@ type ASimpleRes struct {
 	Data string
 }
 type AComplexReq struct {
+	Country       string
+	City          string
 	HouseNumber   int64
-	IsCondo       bool
 	SomeWeirdTest string
 	Recursive     map[string]AComplexReq
 	When          time.Time
-	Some          crypto.Decrypter
-	Country       string
-	City          string
+	IsCondo       bool
 	Arrofpstr     []string
+	Some          crypto.Decrypter
 }
 
 func ApiMethod01(req *ASimpleReq) (res *ASimpleRes, err error) {
@@ -78,9 +78,9 @@ func ApiMethod01(req *ASimpleReq) (res *ASimpleRes, err error) {
 	if err != nil {
 		return
 	}
-	var ret *ASimpleRes
-	err = dec.Decode(ret)
-	return ret, err
+	res = &ASimpleRes{}
+	err = dec.Decode(res)
+	return
 }
 func ApiMethod02(req *AComplexReq) (res *ASimpleRes, err error) {
 	var dec *json.Decoder
@@ -88,7 +88,7 @@ func ApiMethod02(req *AComplexReq) (res *ASimpleRes, err error) {
 	if err != nil {
 		return
 	}
-	var ret *ASimpleRes
-	err = dec.Decode(ret)
-	return ret, err
+	res = &ASimpleRes{}
+	err = dec.Decode(res)
+	return
 }
