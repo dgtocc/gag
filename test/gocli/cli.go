@@ -54,35 +54,41 @@ func invoke(m string, path string, bodyo interface{}) (*json.Decoder, error) {
 	return ret, nil
 }
 
-type AStr struct {
+type ASimpleReq struct {
+	Data string
+}
+type ASimpleRes struct {
+	Data string
+}
+type AComplexReq struct {
+	HouseNumber   int64
 	IsCondo       bool
 	SomeWeirdTest string
-	Arrofpstr     []string
+	Recursive     map[string]AComplexReq
 	When          time.Time
 	Some          crypto.Decrypter
 	Country       string
 	City          string
-	HouseNumber   int64
-	Recursive     map[string]AStr
+	Arrofpstr     []string
 }
 
-func SomeGET(req []*AStr) (res string, err error) {
-	var dec *json.Decoder
-	dec, err = invoke("GET", "/someapi2", req)
-	if err != nil {
-		return
-	}
-	var ret string
-	err = dec.Decode(&ret)
-	return ret, err
-}
-func SomeAPI(req []time.Time) (res string, err error) {
+func ApiMethod01(req *ASimpleReq) (res *ASimpleRes, err error) {
 	var dec *json.Decoder
 	dec, err = invoke("POST", "/someapi", req)
 	if err != nil {
 		return
 	}
-	var ret string
-	err = dec.Decode(&ret)
+	var ret *ASimpleRes
+	err = dec.Decode(ret)
+	return ret, err
+}
+func ApiMethod02(req *AComplexReq) (res *ASimpleRes, err error) {
+	var dec *json.Decoder
+	dec, err = invoke("GET", "/someapi2", req)
+	if err != nil {
+		return
+	}
+	var ret *ASimpleRes
+	err = dec.Decode(ret)
 	return ret, err
 }
