@@ -102,9 +102,9 @@ func ProcessGinServerOutput(f string) error {
 			} else {
 				l("\t\tc.BindJSON(&req)")
 			}
-			l("\t\tc.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"CTX\", c))")
-			l("\t\tc.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"REQ\", c.Request))")
-			l("\t\tc.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"RES\", c.Writer))")
+			l("\t\tc.Request=c.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"CTX\", c))")
+			l("\t\tc.Request=c.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"REQ\", c.Request))")
+			l("\t\tc.Request=c.Request.WithContext(contextlib.WithValue(c.Request.Context(), \"RES\", c.Writer))")
 			l("\t\tres,err := %s(c.Request.Context(),req)", verb.Method.Name)
 			l("\t\tif err!=nil{")
 			l("\t\t\tc.AbortWithError(http.StatusInternalServerError,err)")
